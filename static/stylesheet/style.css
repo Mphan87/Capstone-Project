@@ -1,0 +1,90 @@
+
+
+
+
+ul {
+  list-style-type: none;
+  width: 500px;
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+.searchresult {
+  float: left;
+  max-width:100%;
+  height:auto;
+  object-fit: cover;
+}
+
+.profilepicture{
+  float: left;
+  max-width:500px;
+  height:auto;
+  object-fit: cover;
+}
+
+.logo{
+  float: left;
+  max-width:300px;
+  height:auto;
+  object-fit: cover;
+}
+
+.userimgs{
+  max-width:300px;
+  height:auto;
+  object-fit: cover;
+}
+
+.userdetailpic{
+  max-width:500px;
+  height:auto;
+  object-fit: cover;
+}
+
+.faves{
+  max-width:500px;
+  height:auto;
+  object-fit: cover;
+}
+
+.messageimgs{
+  max-width:300px;
+  height:auto;
+  object-fit: cover;
+}
+
+.following{
+  max-width:300px;
+  height:auto;
+  object-fit: cover;
+}
+
+.businessdetail{
+  max-width:500px;
+  height:auto;
+  object-fit: cover;
+}
+
+li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+li:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+
+
+
+

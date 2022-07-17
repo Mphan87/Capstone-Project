@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+<br>
+
+
+<img class ="profilepicture" src="{{ user.image_url }}" {{ user.username }}">   
+
+<div>
+
+<b> Username:</b> {{user.username}}
+<br>
+<b>Email:</b> {{user.email}}
+<br>
+<b>Bio:</b> {{user.bio}}
+<br>
+<b>Location:</b> {{user.location}}
+
+<br>
+     
+<form>
+    <button formaction="/profile/update" formmethod="GET" class="btn btn-outline-primary">Edit Profile</button>
+</form>
+
+
+
+</body>
+</html>
+
+
+{% endblock %}

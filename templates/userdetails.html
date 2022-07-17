@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+ 
+<br>
+
+{%if user.id in following_ids%}
+
+<a href="/users/unfollow/{{ user.id }}" class="btn btn-outline-secondary"> unfollow  </a>
+
+{%else%}
+
+<a href="/users/follow/{{ user.id }}" class="btn btn-outline-secondary"> follow </a>
+
+{%endif%}
+
+<br>
+
+
+<img class= "userdetailpic" src="{{user["image_url"]}}">
+
+
+<br>
+<b> Username:  </b> : {{user.username}}
+<br>
+<b> Email: </b> {{user.email}}
+<br>
+<b> Bio:</b> {{user.bio}}
+
+</body>
+</html>
+{% endblock %}

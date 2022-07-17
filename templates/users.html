@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+
+       <form action="/users">
+          <input name="q" class="form-control" placeholder="Search Phoodie" id="search">
+          <button>
+            <span class="fa fa-search"></span>
+          </button>
+        </form>
+
+        <br>
+
+
+      {% for user in users %}
+      {% if g.user == user %}
+
+
+      {%else%}
+
+      <br>
+      <li>
+        <b> {{user.username}}   </b>
+       <br>
+       <a href="/users/{{ user.id}}"> 
+       <img class="userimgs" src="{{user.image_url }}"></a>
+       <br>
+
+
+
+       {%if user.id in following_ids%}
+
+       <a href="/users/unfollow/{{ user.id }}" class="btn btn-outline-secondary"> unfollow  </a>
+<br>
+       {%else%}
+       
+       <a href="/users/follow/{{ user.id }}" class="btn btn-outline-secondary"> follow </a>
+
+       <br>
+
+
+        {% endif %}
+        
+        {% endif %}
+        {% endfor %}
+    
+</body>
+</html>
+{% endblock %}

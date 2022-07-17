@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% for follow in following %}
+
+<li>   
+
+   <br>  <b> {{follow.username}} </b> 
+   <br> <img class = "following" src="{{follow.image_url}}">  
+   <br>
+   <a href="/users/unfollow/{{follow.id}}" class="btn btn-outline-secondary"> Stop Following </a>
+
+</li>
+
+
+{%endfor%}
+{%endblock%}

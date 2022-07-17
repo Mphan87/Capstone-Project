@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<br>
+
+
+<h1>Messages</h1>
+   
+<br>
+
+<form method="POST">
+
+  {{form.hidden_tag()}}
+
+  {% for field in form.errors %}
+  <div>{{ field }}:
+    <ul>
+      {% for error in form.errors[field] %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+
+  {% for field in form if field.widget.input_type != 'hidden' %}
+  <div class="form-group row">
+    {{field.label(class="col-sm-2 col-form-label")}}
+    <div class="col-sm-10">
+      {{field(class="form-control")}}
+    </div>
+  </div>
+  {% endfor %}
+  <button>Go</button>
+</form>
+
+<br>
+
+{%for message in messages%}
+<br>
+<li> {{message.timestamp.strftime('%d %B %Y')}} </li>
+<li><a href="/users/{{message.user.id}}" class="btn btn-outline-secondary"> <b>{{message.user.username}}</b></a> : {{message.text}}  </li>
+<li><img class="messageimgs" src="{{message.image_url }}"></a></li>
+<br>
+{%endfor%}
+
+ 
+{% endblock %}

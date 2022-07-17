@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+
+
+
+<br>
+<b> {{data["name"]}} </b>
+<br>
+<img class = "businessdetail" src="{{data["image_url"]}}">
+
+<div>
+
+{{data["location"]["address1"]}}
+{{data["location"]["city"]}},
+{{data["location"]["state"]}}
+{{data["location"]["zip_code"]}}
+<br>
+
+<a href='/business/{{data["id"]}}/add_favorites' class="btn btn-secondary" ><button > Add to favorite </button></a>
+</div>
+
+</body>
+</html>
+
+
+<br>
+
+<p1> <b> Reviews </b>  </p1>
+
+
+
+{%for review in data2["reviews"]%}
+
+<li> {{review["user"]["name"]}} : {{review["text"]}} </li> 
+
+<br>
+
+{%endfor%}
+
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="/static/stylesheet/style.css">
+<script src="https://unpkg.com/jquery"></script>
+<script src="https://unpkg.com/popper"></script>
+<script src="https://unpkg.com/bootstrap"></script>
+
+<link rel="stylesheet"
+href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+<link rel="stylesheet" href="/static/stylesheets/style.css">
+<link rel="shortcut icon" href="/static/favicon.ico">
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+    <nav class="navbar navbar-expand">
+      <div class="container-fluid">
+        <div class="navbar-header"> 
+<body>
+
+
+{% if not g.user %}
+
+<form>
+<button formaction="/login" formmethod="GET">login</button>
+<button formaction="/signup" formmethod="GET">signup</button>
+</form>
+
+
+{% else %}
+
+      <li>
+        <a href="/" class="btn btn-outline-secondary"> Home</a>
+        <a href="/profile" class="btn btn-outline-secondary"> Profile</a>
+        <a href="/users" class="btn btn-outline-secondary"> Foodies</a>
+        <a href="/favorites" class="btn btn-outline-secondary"> Favorites</a>
+        <a href="/following"  Class="btn btn-outline-secondary"> Following</a>
+        <a href="/messages"  Class="btn btn-outline-secondary"> Messages</a>
+        <a href="/logout" class="btn btn-outline-secondary"> Logout</a>
+       <li>
+
+{% endif %}
+
+
+{% block content %}
+{% endblock %}
+

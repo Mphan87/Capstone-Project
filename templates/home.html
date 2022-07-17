@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+<br>
+
+
+<img class = "logo" src="https://drexel.edu/~/media/Images/baiada/Phoodie_Logo.ashx?la=en" width="400px" height="350px" />
+<br>
+   <form action = "/results"  <span class="fa fa-search"></span>
+        <input type="text" name ="term" placeholder="Tacos, kbbq, burgers">
+        <input type="text" name ="location" placeholder="123 fake street">
+        <button > Lets Go </button>
+   </form>
+
+
+
+<br>
+
+    {% for business in businesses%}
+
+
+<ul>
+ <br>
+          <li>
+            <a href="/business/{{business["id"]}}">
+            
+            <h3>{{business["name"]}}</h3>
+
+            
+            <img class="searchresult" src="{{ business.image_url }}">
+      
+
+            <p> {{business["location"]["address1"]}}
+                {{business["location"]["city"]}},
+                {{business["location"]["state"]}}
+                {{business["phone"]}} 
+            </a>  
+
+           </li>
+
+        </ul>     
+
+
+    {% endfor %}
+
+
+</body>
+</html>
+
+{% endblock %}
