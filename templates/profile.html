@@ -2,33 +2,27 @@
 {% block content %}
 
 
+<h1>  MY BIO </h1>
 
 
-<br>
-
-
-<img class ="profilepicture" src="{{ user.image_url }}" {{ user.username }}">   
-
-<div>
-
-<b> Username:</b> {{user.username}}
-<br>
-<b>Email:</b> {{user.email}}
-<br>
-<b>Bio:</b> {{user.bio}}
-<br>
-<b>Location:</b> {{user.location}}
+<div class= "profile-container">
+<img class="profilepicture" src="{{ user.image_url }}"/>
 
 <br>
-     
+
+
+<li><b> Username:</b> {{user.username}}</li> 
+<li><b>Email:</b> {{user.email}}</li>
+<li><b>Bio:</b> {{user.bio}}</li>
+<li><b>Location:</b> {{user.location}}</li>
+
+<br>
+ 
 <form>
     <button formaction="/profile/update" formmethod="GET" class="btn btn-outline-primary">Edit Profile</button>
 </form>
 
 
-
-</body>
-</html>
-
+</div>
 
 {% endblock %}

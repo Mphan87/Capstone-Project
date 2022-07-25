@@ -1,25 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>  MY FAVORITES </h1>
+<h1>  MY FAVORITES</h1>
+
+<div class = "faves-container">
+
+
+
+
 
 {% for faves in myfaves %}
+<br>
+<li> <a href='/business/{{faves.business_id}}'>
+    {{faves.name}} <img class = "faves" src="{{ faves.image_url}}" /></a>
 
-<li> 
-    <a href='/business/{{faves.business_id}}'>
-    {{faves.name}}  <div> <img class = "faves" src="{{ faves.image_url }}" width="400px" height="300px" /> </div>
-</a>
-
-
-<a href="/favorites/remove/{{faves.id}}" class="btn btn-outline-secondary"> UN-FAVE</a>
-
+    
+<a href="/favorites/remove/{{faves.id}}" class="btn btn-outline-primary"> UN-FAVE</a>
 </li> 
 
 <br>
 
+</div>
+
 {% endfor %}
-
-</body>
-</html>
-
 {% endblock %}

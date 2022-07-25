@@ -3,8 +3,18 @@
 
 
 
- 
+<div class= "user-detail-container">
+
+<img class= "userdetailpic" src="{{user["image_url"]}}">
+
+
+<li> <b> Username:  </b> : {{user.username}} </li>
+<li><b> Email: </b> {{user.email}}</li>
+<li><b> Bio:</b> {{user.bio}}
+
 <br>
+
+</div>
 
 {%if user.id in following_ids%}
 
@@ -16,19 +26,8 @@
 
 {%endif%}
 
-<br>
 
 
-<img class= "userdetailpic" src="{{user["image_url"]}}">
 
 
-<br>
-<b> Username:  </b> : {{user.username}}
-<br>
-<b> Email: </b> {{user.email}}
-<br>
-<b> Bio:</b> {{user.bio}}
-
-</body>
-</html>
 {% endblock %}

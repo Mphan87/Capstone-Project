@@ -7,7 +7,6 @@ from models import db, connect_db, User, Favorite, Follows, Message
 from forms import NewUserForm, LoginForm, UserEditForm, MessageForm
 from flask_bcrypt import Bcrypt
 from secret_key import api_key
-from flask_debugtoolbar import DebugToolbarExtension
 
 bcrypt = Bcrypt()
 
@@ -52,9 +51,11 @@ def signup():
                 image_url=image_url)
            db.session.add(user)
            db.session.commit()
-           session['username'] = user.username
-           return redirect(f"/users/{user.id}")
+           session[CURR_USER_KEY] = user.id
+        
+           return redirect("/")
     else:
+        
            return render_template("signup.html", form=form)
        
   
@@ -96,25 +97,29 @@ def showsearchform():
 
 @app.route('/results', methods=["GET"])
 def searchresults():
-    term = request.args["term"]
-    location = request.args["location"]
-    parameters = {'term': term, 'location' : location, 'limit' : 10}
-    response = requests.get(API_BASE_SEARCH, params = parameters, headers = resp_header)
-    data = response.json()
-    businesses = data["businesses"]
-    return render_template("home.html", businesses = businesses)
 
+ 
+    location = request.args["location"]
+    
+    if location:
+       term = request.args["term"]
+       parameters = {'term': term, 'location' : location, 'limit' : 20}
+       response = requests.get(API_BASE_SEARCH, params = parameters, headers = resp_header)
+       data = response.json()
+       businesses = data["businesses"]
+       return render_template("home.html", businesses = businesses, response = response)
+    
+    flash("Please add a location!!")
+    return redirect("/")
+    
 @app.route('/users')
 def list_users():
     
- 
  if g.user:
     
     following_ids = [f.id for f in g.user.following]
     me = User.query.get(g.user.id)
     following = me.following
-
-    
     search = request.args.get('q')
     if not search:
         users = User.query.all()
@@ -153,6 +158,10 @@ def business_detail(business_id):
 
 @app.route('/business/<business_id>/add_favorites')
 def add_favorite(business_id):
+    
+    
+  if g.user:
+    
     response = requests.get(f"https://api.yelp.com/v3/businesses/{business_id}", headers = resp_header)
     data = response.json()
     name = data["name"]
@@ -174,7 +183,12 @@ def add_favorite(business_id):
                         user_id = user_id)
     db.session.add(new_fave)
     db.session.commit()       
-    return redirect(F"/business/{business_id}")
+    return redirect(f"/business/{business_id}")
+   
+  else:
+   
+    return redirect(f"/business/{business_id}")
+   
 
 @app.route('/favorites')
 def my_favorite():
@@ -291,7 +305,4 @@ def remove_follow(user_id):
     db.session.commit()
 
     return redirect("/users")
-    
-    
-    
     

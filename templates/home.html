@@ -1,53 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<link rel="stylesheet" href="/static/stylesheet/home.css">
+
+
+<img class="home-logo" src="https://drexel.edu/~/media/Images/baiada/Phoodie_Logo.ashx?la=en" />
+
+<form action = "/results" <span class="fa fa-search"></span>
+    <input type="text" name="term" class="textbox" placeholder="Tacos, kbbq, burgers">
+    <input type="text" name="location" class="textbox" placeholder="123 fake street">
+    <button class="btn btn-outline-primary" type="submit">Lets Go</button>
+</form>
+
+
+{% for msg in get_flashed_messages()%}
+<h3 class = "locationerror">{{msg}}</h3>
+
+{%endfor%}
 
 
 
-<br>
-
-
-<img class = "logo" src="https://drexel.edu/~/media/Images/baiada/Phoodie_Logo.ashx?la=en" width="400px" height="350px" />
-<br>
-   <form action = "/results"  <span class="fa fa-search"></span>
-        <input type="text" name ="term" placeholder="Tacos, kbbq, burgers">
-        <input type="text" name ="location" placeholder="123 fake street">
-        <button > Lets Go </button>
-   </form>
-
-
-
-<br>
-
-    {% for business in businesses%}
-
-
+{% for business in businesses%}
 <ul>
- <br>
-          <li>
-            <a href="/business/{{business["id"]}}">
-            
+    <li>
+        
+        <a href="/business/{{business["id"]}}">  
             <h3>{{business["name"]}}</h3>
-
-            
             <img class="searchresult" src="{{ business.image_url }}">
-      
-
             <p> {{business["location"]["address1"]}}
                 {{business["location"]["city"]}},
                 {{business["location"]["state"]}}
                 {{business["phone"]}} 
-            </a>  
-
-           </li>
-
-        </ul>     
-
-
-    {% endfor %}
+        </a>
+        
+    </li>
+</ul>   
 
 
-</body>
-</html>
-
+{% endfor %}
 {% endblock %}

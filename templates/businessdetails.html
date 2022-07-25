@@ -1,44 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<br>
 
 
-
-
-
+<h1 class = "rest-name"> {{data["name"]}} </h1> 
 
 <br>
-<b> {{data["name"]}} </b>
-<br>
+
 <img class = "businessdetail" src="{{data["image_url"]}}">
-
-<div>
-
+<br>
 {{data["location"]["address1"]}}
 {{data["location"]["city"]}},
 {{data["location"]["state"]}}
 {{data["location"]["zip_code"]}}
 <br>
 
-<a href='/business/{{data["id"]}}/add_favorites' class="btn btn-secondary" ><button > Add to favorite </button></a>
-</div>
 
-</body>
-</html>
+{%if g.user%}
 
+
+<a href="/business/{{data["id"]}}/add_favorites" class="btn btn-outline-primary">Add to favorite</a>
+
+{%endif%}
 
 <br>
 
-<p1> <b> Reviews </b>  </p1>
+<h3> <b> Overall Rating: </b>  
+    {{data["rating"]}}/5 Stars
+ 
+</h3>
 
-
+<div class = "reviews">
 
 {%for review in data2["reviews"]%}
-
-<li> {{review["user"]["name"]}} : {{review["text"]}} </li> 
-
+<br>
+<b> <h3> {{review["user"]["name"]}} - {{review["rating"]}}/5 stars </h3></b>   {{review["text"]}}
 <br>
 
+
 {%endfor%}
+
+</div>
 
 {% endblock %}
