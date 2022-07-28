@@ -35,17 +35,20 @@ h3 {
 
 .searchresult {
   float: left;
-  max-width:100%;
-  height:auto;
+  width: 500px;
+  height: 500px;
   object-fit: cover;
-  padding: px
+  padding: px;
+  border-radius: 25px;
 }
+
 
 .profilepicture{
   float: left;
   max-width:500px;
   height:auto;
   object-fit: cover;
+  border-radius: 25px;
 }
 
 .home-logo {
@@ -56,9 +59,11 @@ h3 {
 }
 
 .userimgs{
-  max-width:300px;
-  height:auto;
+
   object-fit: cover;
+  border-radius: 25px;
+  width: 200px;
+  height: 200px;
 }
 
 .userdetailpic{
@@ -68,23 +73,34 @@ h3 {
 }
 
 .faves{
-  max-width:300px;
-  height:auto;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
   display: flex;
   Flex-direction: column;
+  border-radius: 25px;
 }
+
+.test11 :hover {
+ background-color: black;
+ color: black;
+
+}
+
 
 .messageimgs{
   max-width:300px;
   height:auto;
   object-fit: cover;
+  border-radius: 25px;
 }
 
 .following{
-  max-width:300px;
-  height:auto;
   object-fit: cover;
+  border-radius: 25px;
+  width: 200px;
+  height: 200px;
+  
 }
 
 .businessdetail{
@@ -129,4 +145,23 @@ li {
 .locationerror{
   color: red;
   border: 2px solid red
+}
+
+.usercontainer{
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+
+.test {
+  display: flex;
+  flex-direction: row;
+  /* min-width: 100%; */
+  max-width: 100%;
+  overflow: scroll;
+}
+
+
+.searchbar {
+  width: 500px;
 }

@@ -6,11 +6,10 @@
 <div class = "faves-container">
 
 
-
-
-
 {% for faves in myfaves %}
 <br>
+
+
 <li> <a href='/business/{{faves.business_id}}'>
     {{faves.name}} <img class = "faves" src="{{ faves.image_url}}" /></a>
 

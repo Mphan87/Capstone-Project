@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<br>
-
-
-<h1 class = "rest-name"> {{data["name"]}} </h1> 
 
 <br>
 
-<img class = "businessdetail" src="{{data["image_url"]}}">
+<h1 class="rest-name"> {{data["name"]}} </h1>
+
+<br>
+
+<img class="businessdetail" src="{{data["image_url"]}}">
 <br>
 {{data["location"]["address1"]}}
 {{data["location"]["city"]}},
@@ -18,28 +18,38 @@
 
 
 {%if g.user%}
+{%if businessid in faves_businessID %}
 
+<a href="/favorites/remove/{{favesIDlookup[0]}}" class="btn btn-outline-primary">unfave</a>
 
-<a href="/business/{{data["id"]}}/add_favorites" class="btn btn-outline-primary">Add to favorite</a>
+{%else%}
+
+<a href="/business/{{data["id"]}}/add_favorites" class="btn btn-outline-primary">favorite</a>
 
 {%endif%}
+{%else%}
+{%endif%}
+
 
 <br>
 
-<h3> <b> Overall Rating: </b>  
+<h3> <b> Overall Rating: </b>
     {{data["rating"]}}/5 Stars
- 
+
 </h3>
 
-<div class = "reviews">
+<div class="reviews">
 
-{%for review in data2["reviews"]%}
-<br>
-<b> <h3> {{review["user"]["name"]}} - {{review["rating"]}}/5 stars </h3></b>   {{review["text"]}}
-<br>
+    {%for review in data2["reviews"]%}
+    <br>
+    <b>
+        <h3> {{review["user"]["name"]}} - {{review["rating"]}}/5 stars </h3>
+    </b> {{review["text"]}}
+    <br>
 
 
-{%endfor%}
+    {%endfor%}
+
 
 </div>
 
